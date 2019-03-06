@@ -17,7 +17,6 @@ int button_state = 0;
 int old_button_state = 0;
 
 
-
 void setup() {
   Serial.begin(9600);
   pinMode(ledRed_1, OUTPUT);
@@ -36,14 +35,23 @@ void loop() {
   unsigned long now = millis();
   if (now - last_measure >= 1000) {
     digitalWrite(ledGreen, HIGH);
-    float proximity = distanceSensor.measureDistanceCm();
     float temperature = dht.readTemperature();
     float humidity = dht.readHumidity();
+
+    int proximity = 0;
+    for (int i = 0; i < 10; i++) {
+      int temporary_distance = distanceSensor.measureDistanceCm();
+      if (temporary_distance > 0) proximity += temporary_distance;
+      else i--;
+      delay(5);
+    }
+    int average = proximity/10;
+
     digitalWrite(ledGreen, LOW);
 
     Serial.print(millis());
     Serial.print(", ");
-    Serial.print(proximity);
+    Serial.print(average);
     Serial.print(", ");
     Serial.print(temperature);
     Serial.print(", ");
