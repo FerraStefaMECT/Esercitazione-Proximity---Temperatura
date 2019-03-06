@@ -10,8 +10,11 @@ int ledRed_1 = 2;
 int ledRed_2 = 3;
 int ledGreen = 4;
 int pushButton = 5;
+
 unsigned long last_measure = 0;
 int delta = 1000;
+int button_state = 0;
+int old_button_state = 0;
 
 
 
@@ -37,6 +40,7 @@ void loop() {
     float temperature = dht.readTemperature();
     float humidity = dht.readHumidity();
     digitalWrite(ledGreen, LOW);
+
     Serial.print(millis());
     Serial.print(", ");
     Serial.print(proximity);
@@ -46,6 +50,14 @@ void loop() {
     Serial.print(humidity);
     Serial.println(", ");
 
+    if (temperature > 30)      digitalWrite(ledRed_1, HIGH);
+    if (humidity > 50)         digitalWrite(ledRed_2, HIGH);
     last_measure = now;
+  }
+
+  button_state = digitalRead(pushButton);
+  if (button_state = 1 && button_state != old_button_state) {
+    digitalWrite(ledRed_1, LOW);
+    digitalWrite(ledRed_2, LOW);
   }
 }
