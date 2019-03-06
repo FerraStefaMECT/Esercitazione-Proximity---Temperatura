@@ -239,14 +239,6 @@ F 3 "" H 5750 3500 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	5950 4000 6300 4000
-Wire Wire Line
-	5950 3900 6300 3900
-Wire Wire Line
-	5950 3800 6300 3800
-Wire Wire Line
-	5950 3700 6300 3700
-Wire Wire Line
 	5950 3600 6300 3600
 Wire Wire Line
 	5950 3500 6300 3500
@@ -453,4 +445,20 @@ F 3 "~" H 7800 3800 50  0001 C CNN
 	1    7800 3800
 	1    0    0    -1  
 $EndComp
+Text Notes 7450 3650 0    50   ~ 0
+Vcc
+Text Notes 7450 4100 0    50   ~ 0
+GND
+Text Notes 7300 3750 0    50   ~ 0
+Trig
+Text Notes 7300 4000 0    50   ~ 0
+Echo
+Wire Wire Line
+	5950 3700 7600 3700
+Wire Wire Line
+	5950 3800 7600 3800
+Wire Wire Line
+	5950 3900 7600 3900
+Wire Wire Line
+	5950 4000 7600 4000
 $EndSCHEMATC
